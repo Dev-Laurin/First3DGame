@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    public CharacterController controller; 
-    public Transform cam; 
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    public float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
 
-    public float speed = 6f; 
-    public float turnSmoothTime = 0.1f; 
-    float turnSmoothVelocity; 
+    public Transform child; 
+
+
+    public CharacterController controller; 
+    private Transform cam; 
+    float rotationSpeed = 4.0f;
 
     private PlayerControls playerActionControls; 
     Vector2 move; 
 
-    private void Awake(){
-        
+    private void Awake(){    
         playerActionControls = new PlayerControls(); 
-        playerActionControls.Land.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-		playerActionControls.Land.Move.canceled += ctx => move = Vector2.zero;  
     }
 
     private void OnEnable(){
@@ -29,22 +32,36 @@ public class ThirdPersonMovement : MonoBehaviour
         playerActionControls.Disable(); 
     }
 
-    // Update is called once per frame
+    void Start(){
+        cam = Camera.main.transform; 
+        child = transform.GetChild(0).transform; 
+    }
+
     void Update()
     {
-        float horizontal = move.x; 
-        float vertical = move.y; 
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; 
-        if(direction.magnitude >= 0.1f){
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + 
-            cam.eulerAngles.y; 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, 
-            ref turnSmoothVelocity, turnSmoothTime); 
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        Vector2 movement = playerActionControls.Land.Move.ReadValue<Vector2>(); 
+        Vector3 move = (cam.forward * movement.y + cam.right * movement.x); 
+        move.y = 0f; 
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime); 
+        // Changes the height position of the player..
+        if (playerActionControls.Land.Jump.triggered && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+
+        if(movement != Vector2.zero){
+            Quaternion rotation = Quaternion.Euler(new Vector3(child.localEulerAngles.x, cam.localEulerAngles.y, child.localEulerAngles.z)); 
+            child.rotation = Quaternion.Lerp(child.rotation, rotation, Time.deltaTime * rotationSpeed); 
         }
     }
 }
