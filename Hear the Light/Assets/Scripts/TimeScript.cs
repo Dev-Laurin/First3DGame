@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeScript : MonoBehaviour
 {
     private DateTime datetime; 
+    public GameObject SeasonObj; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +25,6 @@ public class TimeScript : MonoBehaviour
     void UpdateTime(){
         datetime.PassTime(); 
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = datetime.GetDateTime();
+        SeasonObj.GetComponent<TMPro.TextMeshProUGUI>().text = datetime.GetDayOfSeason(); 
     }
 }

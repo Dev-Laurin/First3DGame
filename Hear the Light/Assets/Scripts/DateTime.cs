@@ -14,12 +14,16 @@ public class DateTime
     private int currentTimeOfDay; 
     private int currentDay; 
     private int previousTimeOfDay; 
+    private int currentDayOfSeason; 
+    private int currentSeason; 
 
     public DateTime(){
         currentDay = 0; 
         currentHour = 8; 
         currentMin = 0; 
         currentTimeOfDay = 0; 
+        currentDayOfSeason = 1; 
+        currentSeason = 0; 
     }
 
     //updates time incrementally - to be called by the update function. 
@@ -39,6 +43,7 @@ public class DateTime
             //go to next day
             if(currentHour > 11 && currentTimeOfDay == 1){
                 currentDay += 1; 
+                currentDayOfSeason += 1; 
                 //reset to beg of week 
                 if(currentDay >= days.Count){
                     currentDay = 0; 
@@ -52,6 +57,15 @@ public class DateTime
         if(currentHour == 12){
             currentTimeOfDay = 1; //change to PM 
         }
+
+        //change seasons
+        if(currentDayOfSeason > 31){
+            currentSeason += 1; 
+            if(currentSeason >= season.Count){
+                currentSeason = 0; 
+            }
+            currentDayOfSeason = 1; 
+        }
     }
 
     public string GetDateTime(){
@@ -60,6 +74,10 @@ public class DateTime
             prettyMin = "00"; 
         }
         return days[currentDay] + " " + currentHour + ":" + prettyMin + timeOfDay[currentTimeOfDay]; 
+    }
+
+    public string GetDayOfSeason(){
+        return season[currentSeason] + " " + "Day " + currentDayOfSeason; 
     }
 
     //Go to next day (sleep)
