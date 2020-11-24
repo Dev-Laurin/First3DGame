@@ -11,10 +11,7 @@ public class TillGround : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            //change to tilled ground gameobject 
-            Transform thisPos = transform; 
-            Instantiate(tilledGround, transform.position, Quaternion.identity); 
-            Destroy(gameObject); 
+            
         }
     }
 }

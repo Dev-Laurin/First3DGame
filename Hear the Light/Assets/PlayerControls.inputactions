@@ -153,6 +153,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Interaction",
+            "id": "c2ef8beb-7e48-457c-9eb6-8bc4b76e526d",
+            "actions": [
+                {
+                    "name": "SelectObj",
+                    "type": "Button",
+                    "id": "eebe78d6-cd61-4d9c-9583-942105f5445a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "762920a4-50bd-40ce-bdde-70dd5066b160",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectObj",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "395e20fb-2a88-407e-8cb0-d12765b32fea",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectObj",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

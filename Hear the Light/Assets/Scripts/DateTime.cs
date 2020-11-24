@@ -42,14 +42,7 @@ public class DateTime
 
             //go to next day
             if(currentHour > 11 && currentTimeOfDay == 1){
-                currentDay += 1; 
-                currentDayOfSeason += 1; 
-                //reset to beg of week 
-                if(currentDay >= days.Count){
-                    currentDay = 0; 
-                }
-                currentHour = 0; 
-                currentTimeOfDay = 0; 
+                NextDay(); 
             }
         }
 
@@ -80,9 +73,23 @@ public class DateTime
         return season[currentSeason] + " " + "Day " + currentDayOfSeason; 
     }
 
-    //Go to next day (sleep)
-    public void NextDay(){
+    private void NextDay(){
+        currentDay += 1; 
+        currentDayOfSeason += 1; 
+        //reset to beg of week 
+        if(currentDay >= days.Count){
+            currentDay = 0; 
+        }
+        currentHour = 0; 
+        currentTimeOfDay = 0; 
+    }
 
+    //Go to next day (sleep)
+    public void GoToNextDay(){
+        NextDay(); 
+        //start at 6 am 
+        currentHour = 6; 
+        currentMin = 0; 
     }
 
     // Start is called before the first frame update

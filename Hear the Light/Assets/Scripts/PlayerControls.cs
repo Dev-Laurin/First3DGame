@@ -166,6 +166,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interaction"",
+            ""id"": ""c2ef8beb-7e48-457c-9eb6-8bc4b76e526d"",
+            ""actions"": [
+                {
+                    ""name"": ""SelectObj"",
+                    ""type"": ""Button"",
+                    ""id"": ""eebe78d6-cd61-4d9c-9583-942105f5445a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""762920a4-50bd-40ce-bdde-70dd5066b160"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectObj"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""395e20fb-2a88-407e-8cb0-d12765b32fea"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectObj"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -175,6 +213,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Land_Move = m_Land.FindAction("Move", throwIfNotFound: true);
         m_Land_MoveCamera = m_Land.FindAction("MoveCamera", throwIfNotFound: true);
         m_Land_Jump = m_Land.FindAction("Jump", throwIfNotFound: true);
+        // Interaction
+        m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
+        m_Interaction_SelectObj = m_Interaction.FindAction("SelectObj", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -269,10 +310,47 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public LandActions @Land => new LandActions(this);
+
+    // Interaction
+    private readonly InputActionMap m_Interaction;
+    private IInteractionActions m_InteractionActionsCallbackInterface;
+    private readonly InputAction m_Interaction_SelectObj;
+    public struct InteractionActions
+    {
+        private @PlayerControls m_Wrapper;
+        public InteractionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SelectObj => m_Wrapper.m_Interaction_SelectObj;
+        public InputActionMap Get() { return m_Wrapper.m_Interaction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractionActions instance)
+        {
+            if (m_Wrapper.m_InteractionActionsCallbackInterface != null)
+            {
+                @SelectObj.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnSelectObj;
+                @SelectObj.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnSelectObj;
+                @SelectObj.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnSelectObj;
+            }
+            m_Wrapper.m_InteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @SelectObj.started += instance.OnSelectObj;
+                @SelectObj.performed += instance.OnSelectObj;
+                @SelectObj.canceled += instance.OnSelectObj;
+            }
+        }
+    }
+    public InteractionActions @Interaction => new InteractionActions(this);
     public interface ILandActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnMoveCamera(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IInteractionActions
+    {
+        void OnSelectObj(InputAction.CallbackContext context);
     }
 }

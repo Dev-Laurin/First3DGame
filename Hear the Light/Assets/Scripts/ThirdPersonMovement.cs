@@ -39,6 +39,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Update()
     {
+
+        //Movement
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
