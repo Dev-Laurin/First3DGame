@@ -9,6 +9,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    public float turnSmoothTime = 0.1f; 
+    float turnSmoothVelocity; 
 
     public Transform child; 
 
@@ -50,6 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector2 movement = playerActionControls.Land.Move.ReadValue<Vector2>(); 
         Vector3 move = (cam.forward * movement.y + cam.right * movement.x); 
         move.y = 0f; 
+        Vector3 direction = move.normalized; 
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player..
@@ -62,8 +65,9 @@ public class ThirdPersonMovement : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
         if(movement != Vector2.zero){
-            Quaternion rotation = Quaternion.Euler(new Vector3(child.localEulerAngles.x, cam.localEulerAngles.y, child.localEulerAngles.z)); 
-            child.rotation = Quaternion.Lerp(child.rotation, rotation, Time.deltaTime * rotationSpeed); 
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); 
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);  
         }
     }
 }

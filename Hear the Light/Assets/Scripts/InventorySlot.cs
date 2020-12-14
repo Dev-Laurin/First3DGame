@@ -9,16 +9,13 @@ public class InventorySlot : MonoBehaviour
 
     public void AddItem(Item newItem){
         item = newItem; 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        icon.sprite = item.icon; 
+        icon.enabled = true; 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void ClearSlot(){
+        item = null; 
+        icon.sprite = null; 
+        icon.enabled = false; 
     }
 }
