@@ -10,10 +10,15 @@ public class UntilledGround : Interactable
     public override void Interact(){
         base.Interact(); 
 
-        Debug.Log("Untilled Ground interaction called"); 
-        //change to tilled ground gameobject 
-        Transform thisPos = transform; 
-        Instantiate(tilledGround, transform.position, Quaternion.identity); 
-        Destroy(gameObject); 
+        //is equipped item able to till this? 
+        Item item = GameObject.Find("Player").GetComponent<EquipmentManager>().GetEquippedItem("Weapon"); 
+        if(item != null){
+            if(item.name == "Shovel"){
+                //change to tilled ground gameobject 
+                Transform thisPos = transform; 
+                Instantiate(tilledGround, transform.position, Quaternion.identity); 
+                Destroy(gameObject);
+            }
+        }
     }
 }

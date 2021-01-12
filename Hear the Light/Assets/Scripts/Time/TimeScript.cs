@@ -16,12 +16,6 @@ public class TimeScript : MonoBehaviour
         InvokeRepeating("UpdateTime", .1f, .1f);  
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void UpdateTime(){
         datetime.PassTime(); 
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = datetime.GetDateTime();

@@ -36,6 +36,10 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke(); 
     }
 
+    public void Remove(Item item){
+        items.Remove(item); 
+    }
+
     public void SwapItems(int a, int b){
         Item temp = items[a]; 
         items[a] = items[b]; 
