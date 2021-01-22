@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d088401b83be9544b03ae9be14d38e2, type: 3}
-  m_Name: DefaultShieldItem
+  m_Script: {fileID: 11500000, guid: 2929b5442c9c962449b85a098fba99f2, type: 3}
+  m_Name: DefaultAmmo
   m_EditorClassIdentifier: 
-  name: Default Shield Icon
-  desc: description
-  icon: {fileID: 21300000, guid: 3cd78a2d882f5eb4d90a89170b45b8c6, type: 3}
-  type: 4
+  name: Default Ammo
+  desc: Default Ammo Icon for QI
+  icon: {fileID: 21300000, guid: 8b6d13961c8d0d749ba5c3c2bdeec403, type: 3}
+  type: 3

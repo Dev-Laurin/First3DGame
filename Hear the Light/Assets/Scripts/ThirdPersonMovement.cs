@@ -72,7 +72,6 @@ public class ThirdPersonMovement : MonoBehaviour
         //get further input 
         Vector2 xMovement = playerActionControls.Interaction.ChooseQuickInventory.ReadValue<Vector2>();
         //only care about x values (Left Right). Highlight next weapon
-        Debug.Log(xMovement.x); 
         if(xMovement.x > 0){
             inventoryUI.GetComponent<InventoryUI>().HighlightRightSlot(); 
         }

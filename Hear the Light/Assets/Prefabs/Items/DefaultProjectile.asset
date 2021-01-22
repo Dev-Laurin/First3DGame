@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d088401b83be9544b03ae9be14d38e2, type: 3}
-  m_Name: DefaultWeaponItem
+  m_Script: {fileID: 11500000, guid: 2929b5442c9c962449b85a098fba99f2, type: 3}
+  m_Name: DefaultProjectile
   m_EditorClassIdentifier: 
-  name: Back
-  desc: Default weapon item icon for quick inventory
-  icon: {fileID: 21300000, guid: 19d6b7a79111c6d40a9d535cdf2a7a11, type: 3}
+  name: Default Projectile
+  desc: Default Projectile Icon for QI
+  icon: {fileID: 21300000, guid: 2fdbe9dc6d479c240aeb701d3b732027, type: 3}
+  type: 5

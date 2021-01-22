@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
-    public delegate void OnEquipmentChange(Equipment newItem, Equipment oldItem); 
+    public delegate void OnEquipmentChange(Equipment newItem); 
     public OnEquipmentChange OnEquipmentChanged; 
 
-    Equipment[] currentEquipment;
-    Inventory inventory;  
+    public Equipment[] currentEquipment; 
 
     void Start(){
-        inventory = GameObject.Find("Player").GetComponent<Inventory>(); 
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length; 
         currentEquipment = new Equipment[numSlots]; 
     }
@@ -26,15 +24,9 @@ public class EquipmentManager : MonoBehaviour
     public void Equip(Equipment newItem){
         int slotIndex = (int)newItem.equipSlot; 
 
-        Equipment oldItem = null; 
-        if(currentEquipment[slotIndex] != null){
-            oldItem = currentEquipment[slotIndex]; 
-            inventory.AddItem(oldItem); 
-        }
-
         //callbacks 
         if (OnEquipmentChanged != null){
-            OnEquipmentChanged.Invoke(newItem, oldItem); 
+            OnEquipmentChanged.Invoke(newItem); 
         }
 
         currentEquipment[slotIndex] = newItem; 
@@ -42,16 +34,18 @@ public class EquipmentManager : MonoBehaviour
 
     public void Unequip(int slotIndex){
         if(currentEquipment[slotIndex] != null){
-            Equipment oldItem = currentEquipment[slotIndex]; 
-            inventory.AddItem(oldItem); 
 
             currentEquipment[slotIndex] = null; 
 
             //callbacks 
             if (OnEquipmentChanged != null){
-                OnEquipmentChanged.Invoke(null, oldItem); 
+                OnEquipmentChanged.Invoke(null); 
             }
         }
+    }
+
+    public void UnequipItemByTypeName(string type){
+        Unequip((int)System.Enum.Parse(typeof(EquipmentSlot), type)); 
     }
 
     public void UnequipAll(){

@@ -15,9 +15,7 @@ public class Equipment : Item
 
         //Equip the Item 
         GameObject.Find("Player").GetComponent<EquipmentManager>().Equip(this); 
-        //Remove from inventory 
-        RemoveFromInventory(); 
     }
 }
 
-public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield, Feet}
+public enum EquipmentSlot { Head, Chest, Legs, Tool, Shield, Feet}

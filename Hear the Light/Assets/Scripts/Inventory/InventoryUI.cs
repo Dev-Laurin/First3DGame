@@ -12,11 +12,14 @@ public class InventoryUI : MonoBehaviour
     Inventory inventory; 
     public GameObject inventoryUI; 
     int highlightedSlotIndex; 
+    private EquipmentManager equipment; 
+    private int currentlyEquipped = -1; 
 
     // Start is called before the first frame update
     void Start()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>(); 
+        equipment = GameObject.Find("Player").GetComponent<EquipmentManager>(); 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>(); 
 
         //Don't display yet, not until user opens the menu
@@ -24,20 +27,50 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void HighlightInitialSlot(){
-        //highlight initial slot 
-        highlightedSlotIndex = 0; 
+        if(currentlyEquipped < 0){
+            //highlight initial slot 
+            highlightedSlotIndex = 0; 
+        } 
         slots[highlightedSlotIndex].HighlightSlot(); 
     }
 
     public void SetupQuickInventory(int itemType){
+        DeHighlightAllSlots(); 
+
         UpdateUI(itemType); 
+
+        //highlight current equipment
+        HighlightCurrentEquipment(System.Enum.GetName(typeof(ItemType), itemType)); 
 
         HighlightInitialSlot();
     }
 
+    public void HighlightCurrentEquipment(string itemType){ 
+        Item equippedItem = equipment.GetEquippedItem(itemType); 
+
+        if(equippedItem == null){
+            currentlyEquipped = -1; 
+            return; 
+        }
+
+        for(int i=1; i<slots.Length; i++){
+            if(slots[i].GetItem() == equippedItem){
+
+                slots[i].HighlightSlot(); 
+                currentlyEquipped = i; 
+                highlightedSlotIndex = currentlyEquipped; 
+            }
+        }
+    }
+
     public void HighlightRightSlot(){
-        if(highlightedSlotIndex + 1 < slots.Length){      
-            slots[highlightedSlotIndex].DeHighlightSlot();
+        if(highlightedSlotIndex + 1 < slots.Length){
+
+            //don't dehighlight currently equipped. 
+            if(highlightedSlotIndex != currentlyEquipped){
+                slots[highlightedSlotIndex].DeHighlightSlot();
+            }      
+            
             highlightedSlotIndex += 1;
             slots[highlightedSlotIndex].HighlightSlot(); 
         }  
@@ -45,7 +78,10 @@ public class InventoryUI : MonoBehaviour
 
     public void HighlightLeftSlot(){
         if(highlightedSlotIndex - 1 >= 0){
-            slots[highlightedSlotIndex].DeHighlightSlot();
+            //don't dehighlight currently equipped. 
+            if(highlightedSlotIndex != currentlyEquipped){
+                slots[highlightedSlotIndex].DeHighlightSlot();
+            } 
             highlightedSlotIndex -= 1; 
             slots[highlightedSlotIndex].HighlightSlot(); 
         }
@@ -55,6 +91,7 @@ public class InventoryUI : MonoBehaviour
         for(int i=1; i<slots.Length; i++){
             slots[i].DeHighlightSlot(); 
         }
+        highlightedSlotIndex = currentlyEquipped; 
     }
 
     public void UseItem(){

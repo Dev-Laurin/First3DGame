@@ -2063,7 +2063,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945487459}
-  m_LocalRotation: {x: 0.30517742, y: 0.00000001638556, z: -0.0000000052509987, w: 0.95229554}
+  m_LocalRotation: {x: 0.30517742, y: 0.000000016385561, z: -0.0000000052509987, w: 0.95229554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4148,7 +4148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   player: {fileID: 1395578886}
-  item: {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
+  item: {fileID: 11400000, guid: 10f623a850edd614f89583d3d1b381fc, type: 2}
 --- !u!4 &1741310847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 65a48cd22d8fb495d9ad897c337b6bc9, type: 3}
@@ -4379,12 +4379,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1758027316}
   defaultItemIcon:
-  - {fileID: 11400000, guid: f3179fefdc950814e9fea260f3df8f63, type: 2}
-  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
-  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
-  - {fileID: 11400000, guid: 0bc502b11d4a59e43bc210016bd79186, type: 2}
-  - {fileID: 11400000, guid: a7372f9d6031a9b469925d810136ef2c, type: 2}
-  - {fileID: 11400000, guid: c1601e6f877e63949a8e1c5df1ea3b9a, type: 2}
+  - {fileID: 11400000, guid: 4a8c5383cfed7284fae2dcf97e798287, type: 2}
+  - {fileID: 11400000, guid: 67c464e107efea7449aa3cc754ed1c02, type: 2}
+  - {fileID: 11400000, guid: 92c66a82963ad0f46a1a9707abb8f44a, type: 2}
+  - {fileID: 11400000, guid: 3519b4a0a80945949b22e4ccd99dce73, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   inventoryUI: {fileID: 1896784322}
 --- !u!1 &1904166338
 GameObject:

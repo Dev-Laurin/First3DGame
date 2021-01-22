@@ -31,6 +31,10 @@ public class InventorySlot : MonoBehaviour
             item.Use(); 
         }
     }
+    
+    public Item GetItem(){
+        return item; 
+    }
 
     public void HighlightSlot(){
         background.color = new Color32(30,144,255,255); //rgb

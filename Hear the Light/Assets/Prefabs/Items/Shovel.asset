@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d088401b83be9544b03ae9be14d38e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2681b53273c77b540b81a69f31e3c1a2, type: 3}
   m_Name: Shovel
   m_EditorClassIdentifier: 
   name: Shovel
   desc: 'A tool used for digging. '
   icon: {fileID: 21300000, guid: 673e2ab6ef23b944e82db772d4ff9ce3, type: 3}
+  type: 0
+  equipSlot: 3
+  armorModifier: 0
+  damageModifier: 0
