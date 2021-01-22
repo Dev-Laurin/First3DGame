@@ -8,10 +8,16 @@ public class InventorySlot : MonoBehaviour
     public Image background; 
     Item item; 
 
-    public void AddItem(Item newItem){
+    public bool AddItem(Item newItem){
         item = newItem; 
         icon.sprite = item.icon; 
         icon.enabled = true; 
+
+        if(item == null){
+            icon.enabled = false; 
+            return false; 
+        }
+        return true; 
     }
 
     public void ClearSlot(){

@@ -6,10 +6,7 @@ using System.Collections.Generic;
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent; 
-    public Item defaultWeaponIcon; 
-    public Item defaultShieldIcon; 
-    public Item defaultBowIcon; 
-    public Item defaultArrowIcon; 
+    public List<Item> defaultItemIcon = new List<Item>(); 
 
     InventorySlot[] slots; 
     Inventory inventory; 
@@ -20,20 +17,22 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>(); 
-        inventory.onItemChangedCallback += UpdateUI; 
-
         slots = itemsParent.GetComponentsInChildren<InventorySlot>(); 
 
         //Don't display yet, not until user opens the menu
         inventoryUI.SetActive(false); 
     }
 
-    public void SetupWeaponQuickInventory(){
-        slots[0].AddItem(defaultWeaponIcon); 
-
+    public void HighlightInitialSlot(){
         //highlight initial slot 
         highlightedSlotIndex = 0; 
         slots[highlightedSlotIndex].HighlightSlot(); 
+    }
+
+    public void SetupQuickInventory(int itemType){
+        UpdateUI(itemType); 
+
+        HighlightInitialSlot();
     }
 
     public void HighlightRightSlot(){
@@ -52,13 +51,14 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void UpdateUI(){
+    void UpdateUI(int itemType){
         slots = itemsParent.GetComponentsInChildren<InventorySlot>(); 
-
+        slots[0].AddItem(defaultItemIcon[itemType]); 
         //skip default icon slot for quick inventory 
         for(int i=1; i<slots.Length; i++){
-            if(i < inventory.items.Count){
-                slots[i].AddItem(inventory.items[i]); 
+            Item item = inventory.GetItem(itemType, i - 1); 
+            if(item != null){
+                slots[i].AddItem(item);
             }
             else{
                 slots[i].ClearSlot(); 

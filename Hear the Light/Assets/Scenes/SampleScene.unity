@@ -865,7 +865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317865465}
-  m_LocalRotation: {x: 0.27038392, y: -0.000000016565487, z: 0.000000004652328, w: 0.9627526}
+  m_LocalRotation: {x: 0.27038392, y: 0.000000016565487, z: -0.000000004652328, w: 0.9627526}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2063,7 +2063,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945487459}
-  m_LocalRotation: {x: 0.30517742, y: -0.000000016385558, z: 0.0000000052509983, w: 0.95229554}
+  m_LocalRotation: {x: 0.30517742, y: 0.00000001638556, z: -0.0000000052509987, w: 0.95229554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3235,10 +3235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f94089b34937774ba42d998e3b20534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
-  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
-  space: 8
+  space: 050000000500000005000000050000000500000005000000
 --- !u!1001 &1405723226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4381,10 +4378,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1758027316}
-  defaultWeaponIcon: {fileID: 11400000, guid: f3179fefdc950814e9fea260f3df8f63, type: 2}
-  defaultShieldIcon: {fileID: 0}
-  defaultBowIcon: {fileID: 0}
-  defaultArrowIcon: {fileID: 0}
+  defaultItemIcon:
+  - {fileID: 11400000, guid: f3179fefdc950814e9fea260f3df8f63, type: 2}
+  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
+  - {fileID: 11400000, guid: 6a7a0fbf7e64b5849a772a1546468804, type: 2}
+  - {fileID: 11400000, guid: 0bc502b11d4a59e43bc210016bd79186, type: 2}
+  - {fileID: 11400000, guid: a7372f9d6031a9b469925d810136ef2c, type: 2}
+  - {fileID: 11400000, guid: c1601e6f877e63949a8e1c5df1ea3b9a, type: 2}
   inventoryUI: {fileID: 1896784322}
 --- !u!1 &1904166338
 GameObject:

@@ -243,12 +243,36 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Hold""
                 },
                 {
-                    ""name"": ""ChooseWeaponQuickInventory"",
+                    ""name"": ""ChooseQuickInventory"",
                     ""type"": ""Value"",
                     ""id"": ""26340202-f08f-453d-bcfc-7fd740d72960"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenShieldQuickInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""cbbdec2e-3e93-4b2d-8826-6d7312c74cf9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
+                },
+                {
+                    ""name"": ""OpenBowQuickInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3ee7f4a-be64-4b9b-96c0-0cfbc2927edb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
+                },
+                {
+                    ""name"": ""OpenArrowQuickInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""19d31b21-bd5f-4b2b-87c3-21761e411e8f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -303,7 +327,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -314,7 +338,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -325,7 +349,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -336,7 +360,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -347,7 +371,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -358,7 +382,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -369,7 +393,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -380,7 +404,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -391,7 +415,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -402,7 +426,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -413,7 +437,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -424,7 +448,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -435,7 +459,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -446,7 +470,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -457,9 +481,75 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseWeaponQuickInventory"",
+                    ""action"": ""ChooseQuickInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""967cf6b1-6e01-467d-8e73-198b39395744"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenShieldQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93e826d6-743f-4ab6-a34e-c93c7ac0f3c9"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenShieldQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""775c9471-0af6-437d-a9d1-6ac1f303c798"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenBowQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc57bcd6-189c-4b55-a293-6b09da7a6392"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenBowQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b08d8984-a686-4da6-b8bb-e23391e0c7df"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenArrowQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85093224-0fc2-481b-af68-4686c21319fa"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenArrowQuickInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -475,7 +565,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_SelectObj = m_Interaction.FindAction("SelectObj", throwIfNotFound: true);
         m_Interaction_OpenWeaponQuickInventory = m_Interaction.FindAction("OpenWeaponQuickInventory", throwIfNotFound: true);
-        m_Interaction_ChooseWeaponQuickInventory = m_Interaction.FindAction("ChooseWeaponQuickInventory", throwIfNotFound: true);
+        m_Interaction_ChooseQuickInventory = m_Interaction.FindAction("ChooseQuickInventory", throwIfNotFound: true);
+        m_Interaction_OpenShieldQuickInventory = m_Interaction.FindAction("OpenShieldQuickInventory", throwIfNotFound: true);
+        m_Interaction_OpenBowQuickInventory = m_Interaction.FindAction("OpenBowQuickInventory", throwIfNotFound: true);
+        m_Interaction_OpenArrowQuickInventory = m_Interaction.FindAction("OpenArrowQuickInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -576,14 +669,20 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IInteractionActions m_InteractionActionsCallbackInterface;
     private readonly InputAction m_Interaction_SelectObj;
     private readonly InputAction m_Interaction_OpenWeaponQuickInventory;
-    private readonly InputAction m_Interaction_ChooseWeaponQuickInventory;
+    private readonly InputAction m_Interaction_ChooseQuickInventory;
+    private readonly InputAction m_Interaction_OpenShieldQuickInventory;
+    private readonly InputAction m_Interaction_OpenBowQuickInventory;
+    private readonly InputAction m_Interaction_OpenArrowQuickInventory;
     public struct InteractionActions
     {
         private @PlayerControls m_Wrapper;
         public InteractionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @SelectObj => m_Wrapper.m_Interaction_SelectObj;
         public InputAction @OpenWeaponQuickInventory => m_Wrapper.m_Interaction_OpenWeaponQuickInventory;
-        public InputAction @ChooseWeaponQuickInventory => m_Wrapper.m_Interaction_ChooseWeaponQuickInventory;
+        public InputAction @ChooseQuickInventory => m_Wrapper.m_Interaction_ChooseQuickInventory;
+        public InputAction @OpenShieldQuickInventory => m_Wrapper.m_Interaction_OpenShieldQuickInventory;
+        public InputAction @OpenBowQuickInventory => m_Wrapper.m_Interaction_OpenBowQuickInventory;
+        public InputAction @OpenArrowQuickInventory => m_Wrapper.m_Interaction_OpenArrowQuickInventory;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -599,9 +698,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @OpenWeaponQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenWeaponQuickInventory;
                 @OpenWeaponQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenWeaponQuickInventory;
                 @OpenWeaponQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseWeaponQuickInventory;
+                @ChooseQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseQuickInventory;
+                @ChooseQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseQuickInventory;
+                @ChooseQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnChooseQuickInventory;
+                @OpenShieldQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenShieldQuickInventory;
+                @OpenShieldQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenShieldQuickInventory;
+                @OpenShieldQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenShieldQuickInventory;
+                @OpenBowQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenBowQuickInventory;
+                @OpenBowQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenBowQuickInventory;
+                @OpenBowQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenBowQuickInventory;
+                @OpenArrowQuickInventory.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenArrowQuickInventory;
+                @OpenArrowQuickInventory.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenArrowQuickInventory;
+                @OpenArrowQuickInventory.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnOpenArrowQuickInventory;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -612,9 +720,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @OpenWeaponQuickInventory.started += instance.OnOpenWeaponQuickInventory;
                 @OpenWeaponQuickInventory.performed += instance.OnOpenWeaponQuickInventory;
                 @OpenWeaponQuickInventory.canceled += instance.OnOpenWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.started += instance.OnChooseWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.performed += instance.OnChooseWeaponQuickInventory;
-                @ChooseWeaponQuickInventory.canceled += instance.OnChooseWeaponQuickInventory;
+                @ChooseQuickInventory.started += instance.OnChooseQuickInventory;
+                @ChooseQuickInventory.performed += instance.OnChooseQuickInventory;
+                @ChooseQuickInventory.canceled += instance.OnChooseQuickInventory;
+                @OpenShieldQuickInventory.started += instance.OnOpenShieldQuickInventory;
+                @OpenShieldQuickInventory.performed += instance.OnOpenShieldQuickInventory;
+                @OpenShieldQuickInventory.canceled += instance.OnOpenShieldQuickInventory;
+                @OpenBowQuickInventory.started += instance.OnOpenBowQuickInventory;
+                @OpenBowQuickInventory.performed += instance.OnOpenBowQuickInventory;
+                @OpenBowQuickInventory.canceled += instance.OnOpenBowQuickInventory;
+                @OpenArrowQuickInventory.started += instance.OnOpenArrowQuickInventory;
+                @OpenArrowQuickInventory.performed += instance.OnOpenArrowQuickInventory;
+                @OpenArrowQuickInventory.canceled += instance.OnOpenArrowQuickInventory;
             }
         }
     }
@@ -629,6 +746,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnSelectObj(InputAction.CallbackContext context);
         void OnOpenWeaponQuickInventory(InputAction.CallbackContext context);
-        void OnChooseWeaponQuickInventory(InputAction.CallbackContext context);
+        void OnChooseQuickInventory(InputAction.CallbackContext context);
+        void OnOpenShieldQuickInventory(InputAction.CallbackContext context);
+        void OnOpenBowQuickInventory(InputAction.CallbackContext context);
+        void OnOpenArrowQuickInventory(InputAction.CallbackContext context);
     }
 }

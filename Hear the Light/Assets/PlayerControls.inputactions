@@ -230,12 +230,36 @@
                     "interactions": "Hold"
                 },
                 {
-                    "name": "ChooseWeaponQuickInventory",
+                    "name": "ChooseQuickInventory",
                     "type": "Value",
                     "id": "26340202-f08f-453d-bcfc-7fd740d72960",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "OpenShieldQuickInventory",
+                    "type": "Button",
+                    "id": "cbbdec2e-3e93-4b2d-8826-6d7312c74cf9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
+                },
+                {
+                    "name": "OpenBowQuickInventory",
+                    "type": "Button",
+                    "id": "d3ee7f4a-be64-4b9b-96c0-0cfbc2927edb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
+                },
+                {
+                    "name": "OpenArrowQuickInventory",
+                    "type": "Button",
+                    "id": "19d31b21-bd5f-4b2b-87c3-21761e411e8f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [
@@ -290,7 +314,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -301,7 +325,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -312,7 +336,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -323,7 +347,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -334,7 +358,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -345,7 +369,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -356,7 +380,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -367,7 +391,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -378,7 +402,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -389,7 +413,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -400,7 +424,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -411,7 +435,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -422,7 +446,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -433,7 +457,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -444,9 +468,75 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseWeaponQuickInventory",
+                    "action": "ChooseQuickInventory",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "967cf6b1-6e01-467d-8e73-198b39395744",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenShieldQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93e826d6-743f-4ab6-a34e-c93c7ac0f3c9",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenShieldQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "775c9471-0af6-437d-a9d1-6ac1f303c798",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenBowQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc57bcd6-189c-4b55-a293-6b09da7a6392",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenBowQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b08d8984-a686-4da6-b8bb-e23391e0c7df",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenArrowQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85093224-0fc2-481b-af68-4686c21319fa",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenArrowQuickInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

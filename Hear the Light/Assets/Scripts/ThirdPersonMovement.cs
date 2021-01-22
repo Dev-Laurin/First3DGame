@@ -22,10 +22,26 @@ public class ThirdPersonMovement : MonoBehaviour
     private PlayerControls playerActionControls; 
     Vector2 move; 
 
+    private bool waitingForInput = false; 
+
     private void Awake(){    
         playerActionControls = new PlayerControls(); 
-        playerActionControls.Interaction.OpenWeaponQuickInventory.started += ctx => OpenWeaponQuickInventory(); 
-        playerActionControls.Interaction.OpenWeaponQuickInventory.canceled += ctx => CloseWeaponQuickInventory(); 
+
+        //Quick Tool Inventory
+        playerActionControls.Interaction.OpenWeaponQuickInventory.started += ctx => OpenQuickInventory(0); 
+        playerActionControls.Interaction.OpenWeaponQuickInventory.canceled += ctx => CloseQuickInventory(); 
+    
+        //Quick Shield Inventory 
+        playerActionControls.Interaction.OpenShieldQuickInventory.started += ctx => OpenQuickInventory(4); 
+        playerActionControls.Interaction.OpenShieldQuickInventory.canceled += ctx => CloseQuickInventory(); 
+
+        //Quick Bow Inventory 
+        playerActionControls.Interaction.OpenBowQuickInventory.started += ctx => OpenQuickInventory(5); 
+        playerActionControls.Interaction.OpenBowQuickInventory.canceled += ctx => CloseQuickInventory(); 
+
+        //Quick Arrow Inventory 
+        playerActionControls.Interaction.OpenArrowQuickInventory.started += ctx => OpenQuickInventory(3); 
+        playerActionControls.Interaction.OpenArrowQuickInventory.canceled += ctx => CloseQuickInventory(); 
     }
 
     private void OnEnable(){
@@ -41,30 +57,50 @@ public class ThirdPersonMovement : MonoBehaviour
         child = transform.GetChild(0).transform; 
     }
 
-    private void OpenWeaponQuickInventory(){ 
+    private void OpenQuickInventory(int itemType){
+        inventoryUI.GetComponent<InventoryUI>().SetupQuickInventory(itemType); 
+
         //show the quick inventory
         inventoryUI.SetActive(true); 
-        inventoryUI.GetComponent<InventoryUI>().SetupWeaponQuickInventory(); 
     }
 
-    private void CloseWeaponQuickInventory(){
+    private void CloseQuickInventory(){
         inventoryUI.SetActive(false); 
     }
 
+    private IEnumerator CheckForInventoryInput(){
+        //get further input 
+        Vector2 xMovement = playerActionControls.Interaction.ChooseQuickInventory.ReadValue<Vector2>();
+        //only care about x values (Left Right). Highlight next weapon
+        Debug.Log(xMovement.x); 
+        if(xMovement.x > 0){
+            inventoryUI.GetComponent<InventoryUI>().HighlightRightSlot(); 
+        }
+        else if(xMovement.x < 0){
+            inventoryUI.GetComponent<InventoryUI>().HighlightLeftSlot(); 
+        }
+        //else they stayed on the current slot 
+
+        //wait for a couple seconds for next input 
+        yield return new WaitForSeconds(0.1f); 
+
+        waitingForInput = false; 
+    }
 
     void Update()
     {
         //Check if inventory is already up - avoid moving player if so
-        if(playerActionControls.Interaction.OpenWeaponQuickInventory.ReadValue<float>() > .1f){
-            //get further input 
-            Vector2 xMovement = playerActionControls.Interaction.ChooseWeaponQuickInventory.ReadValue<Vector2>();
-            //only care about x values (Left Right). Highlight next weapon
-            if(xMovement.x > 0){
-                inventoryUI.GetComponent<InventoryUI>().HighlightRightSlot(); 
+        if(playerActionControls.Interaction.OpenWeaponQuickInventory.ReadValue<float>() > .1f || 
+        playerActionControls.Interaction.OpenShieldQuickInventory.ReadValue<float>() > .1f || 
+        playerActionControls.Interaction.OpenBowQuickInventory.ReadValue<float>() > .1f || 
+        playerActionControls.Interaction.OpenArrowQuickInventory.ReadValue<float>() > .1f){
+
+            if(!waitingForInput){
+                waitingForInput = true; 
+                StartCoroutine(CheckForInventoryInput());
             }
-            else{
-                inventoryUI.GetComponent<InventoryUI>().HighlightLeftSlot(); 
-            }
+        
+            //Don't allow character to move so they can choose inventory item to equip instead 
             return; 
         }
 
