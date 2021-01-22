@@ -51,6 +51,26 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public void DeHighlightAllSlots(){
+        for(int i=1; i<slots.Length; i++){
+            slots[i].DeHighlightSlot(); 
+        }
+    }
+
+    public void UseItem(){
+        slots[highlightedSlotIndex].UseItem(); 
+    }
+
+    public void CloseInventory(){
+        //equip the highlighted item 
+        UseItem(); 
+        
+        //dehighlight slots 
+        DeHighlightAllSlots(); 
+
+        inventoryUI.SetActive(false); 
+    }
+
     void UpdateUI(int itemType){
         slots = itemsParent.GetComponentsInChildren<InventorySlot>(); 
         slots[0].AddItem(defaultItemIcon[itemType]); 

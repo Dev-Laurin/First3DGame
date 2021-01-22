@@ -65,7 +65,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     private void CloseQuickInventory(){
-        inventoryUI.SetActive(false); 
+        inventoryUI.GetComponent<InventoryUI>().CloseInventory(); 
     }
 
     private IEnumerator CheckForInventoryInput(){
@@ -94,7 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
         playerActionControls.Interaction.OpenShieldQuickInventory.ReadValue<float>() > .1f || 
         playerActionControls.Interaction.OpenBowQuickInventory.ReadValue<float>() > .1f || 
         playerActionControls.Interaction.OpenArrowQuickInventory.ReadValue<float>() > .1f){
-
+            
             if(!waitingForInput){
                 waitingForInput = true; 
                 StartCoroutine(CheckForInventoryInput());
