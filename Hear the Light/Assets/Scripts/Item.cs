@@ -18,8 +18,8 @@ public class Item : ScriptableObject
         GameObject.Find("Player").GetComponent<Inventory>().Remove(this); 
     }
 
-    public void SetID(int ID){
-        id = ID; 
+    public void SetID(){
+        id = GameObject.Find("GameManager").GetComponent<GameManager>().GetNewID(); 
     }
 }
 

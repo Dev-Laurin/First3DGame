@@ -37,10 +37,10 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void HighlightSlot(){
-        background.color = new Color32(30,144,255,255); //rgb
+        background.color = new Color32(240,255,255, 85); //rgb
     }
 
     public void DeHighlightSlot(){
-        background.color = new Color32(142, 142, 142, 255); 
+        background.color = new Color32(142, 142, 142, 85); 
     }
 }

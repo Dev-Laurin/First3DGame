@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Default Ammo
   desc: Default Ammo Icon for QI
   icon: {fileID: 21300000, guid: 8b6d13961c8d0d749ba5c3c2bdeec403, type: 3}
-  type: 3
+  type: 1

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2929b5442c9c962449b85a098fba99f2, type: 3}
-  m_Name: DefaultProjectile
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: Post-process Volume Profile
   m_EditorClassIdentifier: 
-  name: Default Projectile
-  desc: Default Projectile Icon for QI
-  icon: {fileID: 21300000, guid: 2fdbe9dc6d479c240aeb701d3b732027, type: 3}
-  type: 3
+  settings: []

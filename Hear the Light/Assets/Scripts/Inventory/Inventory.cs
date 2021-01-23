@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
         if(inventory[(int)item.type].Count >= space[(int)item.type]){
             return false; 
         }
+        item.SetID(); 
         inventory[(int)item.type].Add(item); 
         
         if(onItemChangedCallback != null)

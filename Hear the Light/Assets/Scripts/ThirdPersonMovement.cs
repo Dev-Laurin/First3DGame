@@ -32,15 +32,15 @@ public class ThirdPersonMovement : MonoBehaviour
         playerActionControls.Interaction.OpenWeaponQuickInventory.canceled += ctx => CloseQuickInventory(); 
     
         //Quick Shield Inventory 
-        playerActionControls.Interaction.OpenShieldQuickInventory.started += ctx => OpenQuickInventory(4); 
+        playerActionControls.Interaction.OpenShieldQuickInventory.started += ctx => OpenQuickInventory(2); 
         playerActionControls.Interaction.OpenShieldQuickInventory.canceled += ctx => CloseQuickInventory(); 
 
         //Quick Bow Inventory 
-        playerActionControls.Interaction.OpenBowQuickInventory.started += ctx => OpenQuickInventory(5); 
+        playerActionControls.Interaction.OpenBowQuickInventory.started += ctx => OpenQuickInventory(3); 
         playerActionControls.Interaction.OpenBowQuickInventory.canceled += ctx => CloseQuickInventory(); 
 
         //Quick Arrow Inventory 
-        playerActionControls.Interaction.OpenArrowQuickInventory.started += ctx => OpenQuickInventory(3); 
+        playerActionControls.Interaction.OpenArrowQuickInventory.started += ctx => OpenQuickInventory(1); 
         playerActionControls.Interaction.OpenArrowQuickInventory.canceled += ctx => CloseQuickInventory(); 
     }
 

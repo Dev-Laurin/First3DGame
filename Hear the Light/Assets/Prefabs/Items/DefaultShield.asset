@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Default Shield
   desc: Default Shield Icon for QI
   icon: {fileID: 21300000, guid: 3cd78a2d882f5eb4d90a89170b45b8c6, type: 3}
-  type: 4
+  type: 2
