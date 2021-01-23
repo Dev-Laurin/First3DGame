@@ -8,12 +8,18 @@ public class Item : ScriptableObject
     public Sprite icon = null; 
     public ItemType type;
 
+    private int id; //for inventory only
+
     public virtual void Use(){
         Debug.Log("Using " + name); 
     }
 
     public void RemoveFromInventory(){
         GameObject.Find("Player").GetComponent<Inventory>().Remove(this); 
+    }
+
+    public void SetID(int ID){
+        id = ID; 
     }
 }
 

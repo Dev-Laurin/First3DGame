@@ -20,6 +20,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int GetSize(int listIndex){
+        return inventory[listIndex].Count; 
+    }
+
     public bool AddItem(Item item){
 
         if(inventory[(int)item.type].Count >= space[(int)item.type]){

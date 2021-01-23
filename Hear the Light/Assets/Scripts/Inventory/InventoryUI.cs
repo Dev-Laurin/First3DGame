@@ -14,6 +14,9 @@ public class InventoryUI : MonoBehaviour
     int highlightedSlotIndex; 
     private EquipmentManager equipment; 
     private int currentlyEquipped = -1; 
+    private int currentInventorySize = 0; 
+    private int offset = 0; //the index offset of our inventory compared to our UI
+    private int itemListType = -1; 
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void SetupQuickInventory(int itemType){
-        DeHighlightAllSlots(); 
+        itemListType = itemType; 
 
         UpdateUI(itemType); 
 
@@ -64,19 +67,34 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void HighlightRightSlot(){
+        Debug.Log("Moving Right. Carousel value: " + (currentInventorySize > offset + slots.Length && highlightedSlotIndex + 1 > slots.Length)); 
+        Debug.Log("Inventory size > offset + slot length (qualifier): " + (currentInventorySize > offset + slots.Length)); 
+        Debug.Log("slot + 1 > slot length: " + (highlightedSlotIndex + 1 > slots.Length)); 
+        Debug.Log("offset: " + offset); 
+        Debug.Log(highlightedSlotIndex + 1 ); 
+
         if(highlightedSlotIndex + 1 < slots.Length){
 
             //don't dehighlight currently equipped. 
             if(highlightedSlotIndex != currentlyEquipped){
                 slots[highlightedSlotIndex].DeHighlightSlot();
-            }      
+            }     
             
             highlightedSlotIndex += 1;
             slots[highlightedSlotIndex].HighlightSlot(); 
         }  
+        //if slots are filled but we are still going right (carousel)
+        else if(currentInventorySize > offset + slots.Length && highlightedSlotIndex + 1 > (slots.Length - 1) ){
+            //re-fill slots with 1 new item showing on the right 
+            Debug.Log("Moving Carousel Right"); 
+            offset += 1; 
+            UpdateUICarousel(); 
+        }
     }
 
     public void HighlightLeftSlot(){
+        Debug.Log("Moving Left. Carousel value: " + (currentInventorySize > slots.Length && 0 < offset)); 
+        Debug.Log("offset: " + offset); 
         if(highlightedSlotIndex - 1 >= 0){
             //don't dehighlight currently equipped. 
             if(highlightedSlotIndex != currentlyEquipped){
@@ -84,6 +102,12 @@ public class InventoryUI : MonoBehaviour
             } 
             highlightedSlotIndex -= 1; 
             slots[highlightedSlotIndex].HighlightSlot(); 
+        }
+        //moving left (carousel)
+        else if(currentInventorySize > slots.Length && offset > 0){
+            Debug.Log("Moving Carousel Left"); 
+            offset -= 1; 
+            UpdateUICarousel(); 
         }
     }
 
@@ -108,9 +132,32 @@ public class InventoryUI : MonoBehaviour
         inventoryUI.SetActive(false); 
     }
 
+    void UpdateUICarousel(){
+        int startingIndex = 0; 
+
+        if(offset == 0){ //moving leftwards to the very end, add the default icon 
+            Debug.Log("Placing default Item icon"); 
+            startingIndex = 1; 
+            slots[0].AddItem(defaultItemIcon[itemListType]);
+        }
+        for(int i=startingIndex; i<slots.Length; i++){
+            Item item = inventory.GetItem(itemListType, i + offset); 
+            if(item != null){
+                slots[i].AddItem(item);
+            }
+            else if(i == 0){ //add the back slot 
+                 
+            }
+        }
+    }
+
     void UpdateUI(int itemType){
         slots = itemsParent.GetComponentsInChildren<InventorySlot>(); 
         slots[0].AddItem(defaultItemIcon[itemType]); 
+
+        //for the carousel 
+        currentInventorySize = inventory.GetSize(itemType); 
+
         //skip default icon slot for quick inventory 
         for(int i=1; i<slots.Length; i++){
             Item item = inventory.GetItem(itemType, i - 1); 
