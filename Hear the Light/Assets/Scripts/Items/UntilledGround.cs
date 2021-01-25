@@ -11,7 +11,7 @@ public class UntilledGround : Interactable
         base.Interact(); 
 
         //is equipped item able to till this? 
-        Item item = GameObject.Find("Player").GetComponent<EquipmentManager>().GetEquippedItem("Weapon"); 
+        Item item = GameObject.Find("Player").GetComponent<EquipmentManager>().GetEquippedItem("Tool"); 
         if(item != null){
             if(item.name == "Shovel"){
                 //change to tilled ground gameobject 

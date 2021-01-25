@@ -14,8 +14,6 @@ public class PlayerStats : MonoBehaviour
     int hunger; 
     int strength;  
 
-    bool timeToDrain = false; 
-
     void Start(){
         //Load from save 
         thirst = 100; 
@@ -30,6 +28,10 @@ public class PlayerStats : MonoBehaviour
         hunger--; 
         strength--; 
 
+        if(thirst <= 0 || hunger <= 0 || strength <= 0){
+            GameOver(); 
+        }
+
         UpdateUI(); 
     }
 
@@ -37,5 +39,9 @@ public class PlayerStats : MonoBehaviour
         stomachUI.GetComponent<TMPro.TextMeshProUGUI>().text = hunger + "%"; 
         waterUI.GetComponent<TMPro.TextMeshProUGUI>().text = thirst + "%"; 
         strengthUI.GetComponent<TMPro.TextMeshProUGUI>().text = strength + "%"; 
+    }
+
+    public void GameOver(){
+        Debug.Log("You died.");
     }
 }
