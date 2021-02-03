@@ -10,27 +10,14 @@ public class MapGenerator : MonoBehaviour
     public enum DrawMode{NoiseMap, ColorMap, Mesh, FallOffMap}; 
     public DrawMode drawMode; 
 
-    public Noise.NormalizeMode normalizeMode; 
-
     public const int mapChunkSize = 239; 
     [Range(0,6)]
     public int editorPreviewLOD; 
-
-    public float noiseScale; 
+    
     public bool autoUpdate; 
 
-    public int octaves; 
-    [Range(0,1)]
-    public float persistance; 
-    public float lacunarity; 
-
-    public float meshHeightMultiplier; 
-    public AnimationCurve meshHeightCurve; 
-
-    public int seed; 
-    public Vector2 offset; 
-
-    public bool useFallOff; 
+    public TerrainData terrainData; 
+    public NoiseData noiseData;  
 
     public TerrainType[] regions; 
 
@@ -41,6 +28,12 @@ public class MapGenerator : MonoBehaviour
 
     void Awake(){
         fallOffMap = FallOffGenerator.GenerateFallOffMap(mapChunkSize);
+    }
+
+    void OnValuesUpdated(){
+        if(!Application.isPlaying){
+            DrawMapInEditor(); 
+        }
     }
 
     public void DrawMapInEditor(){
@@ -54,7 +47,7 @@ public class MapGenerator : MonoBehaviour
            display.DrawTexture(TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize)); 
         }
         else if(drawMode == DrawMode.Mesh){
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, editorPreviewLOD), TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize)); 
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, terrainData.meshHeightMultiplier, terrainData.meshHeightCurve, editorPreviewLOD), TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize)); 
         }
         else if(drawMode == DrawMode.FallOffMap){
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(FallOffGenerator.GenerateFallOffMap(mapChunkSize))); 
@@ -86,7 +79,7 @@ public class MapGenerator : MonoBehaviour
     }
 
     void MeshDataThread(MapData mapData, int lod, Action<MeshData> callback){
-        MeshData meshData = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, lod); 
+        MeshData meshData = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, terrainData.meshHeightMultiplier, terrainData.meshHeightCurve, lod); 
         lock(meshDataThreadInfoQueue){
             meshDataThreadInfoQueue.Enqueue(new MapThreadInfo<MeshData>(callback, meshData)); 
         }
@@ -109,14 +102,14 @@ public class MapGenerator : MonoBehaviour
     }
 
     MapData GenerateMapData(Vector2 center){
-        float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize + 2, mapChunkSize + 2, seed, noiseScale, 
-        octaves, persistance, lacunarity, center + offset, normalizeMode); 
+        float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize + 2, mapChunkSize + 2, noiseData.seed, noiseData.noiseScale, 
+        noiseData.octaves, noiseData.persistance, noiseData.lacunarity, center + noiseData.offset, noiseData.normalizeMode); 
 
         Color[] colorMap = new Color[mapChunkSize * mapChunkSize]; 
         for(int y=0; y<mapChunkSize; y++){
             for(int x=0; x<mapChunkSize; x++){
 
-                if(useFallOff){
+                if(terrainData.useFallOff){
                     noiseMap[x,y] = Mathf.Clamp01(noiseMap[x,y] - fallOffMap[x,y]); 
                 }
                 float currentHeight = noiseMap[x,y]; 
@@ -135,11 +128,14 @@ public class MapGenerator : MonoBehaviour
     }
 
     void OnValidate(){
-        if(lacunarity < 1){
-            lacunarity = 1;
+        
+        if(terrainData != null){
+            terrainData.OnValuesUpdated -= OnValuesUpdated; 
+            terrainData.OnValuesUpdated += OnValuesUpdated; 
         }
-        if(octaves < 0){
-            octaves = 0; 
+        if(noiseData != null){
+            noiseData.OnValuesUpdated -= OnValuesUpdated; 
+            noiseData.OnValuesUpdated += OnValuesUpdated; 
         }
 
         fallOffMap = FallOffGenerator.GenerateFallOffMap(mapChunkSize); 
