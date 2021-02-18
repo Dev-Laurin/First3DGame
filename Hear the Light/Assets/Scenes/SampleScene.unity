@@ -2294,7 +2294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d5a1096fe225a4183a0ddfaf08593b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d5a1096fe225a4183a0ddfaf08593b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2308,6 +2308,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b7d5a1096fe225a4183a0ddfaf08593b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73605428231e2a4499ad7fb32079b138, type: 2}
     - target: {fileID: 919132149155446097, guid: b7d5a1096fe225a4183a0ddfaf08593b, type: 3}
       propertyPath: m_Name
       value: heart_island_base_w_lake_middle
@@ -3368,7 +3372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012876970884, guid: d4da73351824f0942a0427d6187edb8d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012876970884, guid: d4da73351824f0942a0427d6187edb8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
