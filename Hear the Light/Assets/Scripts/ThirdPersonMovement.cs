@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class ThirdPersonMovement : MonoBehaviour
 {
     private Vector3 playerVelocity;
@@ -110,10 +111,10 @@ public class ThirdPersonMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector2 movement = playerActionControls.Land.Move.ReadValue<Vector2>(); 
-        Vector3 move = (cam.forward * movement.y + cam.right * movement.x); 
-        move.y = 0f; 
-        Vector3 direction = move.normalized; 
+        Vector2 movement = playerActionControls.Land.Move.ReadValue<Vector2>();
+        Vector3 move = (cam.forward * movement.y + cam.right * movement.x);
+        move.y = 0f;
+        Vector3 direction = move.normalized;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player..
@@ -125,10 +126,11 @@ public class ThirdPersonMovement : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if(movement != Vector2.zero){
+        if (movement != Vector2.zero)
+        {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); 
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);  
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
     }
 }
