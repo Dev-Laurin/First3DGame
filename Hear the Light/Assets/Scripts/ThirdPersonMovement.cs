@@ -25,7 +25,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private bool waitingForInput = false; 
 
-    private void Awake(){    
+    private void Awake(){
         playerActionControls = new PlayerControls(); 
 
         //Quick Tool Inventory
@@ -87,6 +87,62 @@ public class ThirdPersonMovement : MonoBehaviour
         waitingForInput = false; 
     }
 
+    List<Vector3> CalculateMovement(Transform cam, Vector2 movement, float playerSpeed)
+    {
+        //Stop vertical movement if grounded 
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        //x z movement
+        Vector3 move = (cam.forward * movement.y + cam.right * movement.x);
+        move.y = 0f;
+        Vector3 direction = move.normalized;
+        move = move * playerSpeed; 
+
+        // Changes the height position of the player..
+        if (playerActionControls.Land.Jump.triggered && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        move += playerVelocity;
+
+        List<Vector3> movementInfo = new List<Vector3>();
+        movementInfo.Add(move);
+        movementInfo.Add(direction); 
+        return movementInfo; 
+    }
+
+    Quaternion CalculateRotation(Vector3 direction, Vector2 movement)
+    {
+        Quaternion rotation = transform.rotation; 
+
+        //Rotate player with camera
+        if (movement != Vector2.zero)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+
+        return rotation; 
+    }
+
+    void MovePlayer()
+    {
+        Vector2 playerInput = playerActionControls.Land.Move.ReadValue<Vector2>();
+        //move
+        List<Vector3> move = CalculateMovement(cam, playerInput, playerSpeed); 
+        controller.Move(move[0] * Time.deltaTime);
+
+        //rotate 
+        transform.rotation = CalculateRotation(move[1], playerInput); 
+    }
+
     void Update()
     {
         //Check if inventory is already up - avoid moving player if so
@@ -105,32 +161,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         //Movement
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
-        Vector2 movement = playerActionControls.Land.Move.ReadValue<Vector2>();
-        Vector3 move = (cam.forward * movement.y + cam.right * movement.x);
-        move.y = 0f;
-        Vector3 direction = move.normalized;
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        // Changes the height position of the player..
-        if (playerActionControls.Land.Jump.triggered && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-
-        if (movement != Vector2.zero)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        }
+        MovePlayer(); 
     }
 }
